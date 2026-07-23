@@ -21,7 +21,7 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
     List<Categoria> findAllByTipoContainingIgnoreCase(String tipo);
 
-    /* A linha acima findbyConain..
+    /* A linha acima findbyCo
      * busca todas as categorias cujo campo tipo contenha esse texto, ignorando maiúsculas e minúsculas.
      */
 

@@ -1,22 +1,27 @@
 package com.generation.gameshow.model;
 
-import java.time.LocalDateTime;
 
-import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
-public class Categoria {
 
 	@Entity // Gera uma tabela
 	@Table(name = "tb_categorias") // CREATE TABLE tb_categoria();
+public class Categoria {
+
+
 	
 	 	
 		
@@ -34,10 +39,13 @@ public class Categoria {
 		@Column(length = 1000)
 		private String descricao;
 		
-		@UpdateTimestamp
-		private LocalDateTime data;
+		
+		// mappedBy aponta para o atributo categoria que existe na classe Produto.
+		@OneToMany(mappedBy = "categoria")
+	    @JsonIgnoreProperties("categoria")
+	    private List<Produto> produtos;
 
-		public Categoria categoria; {
+		public Categoria () {
 		}
 		
 		
@@ -66,13 +74,6 @@ public class Categoria {
 			this.descricao = descricao;
 		}
 
-		public LocalDateTime getData() {
-			return data;
-		}
-
-		public void setData(LocalDateTime data) {
-			this.data = data;
-		}
 
 		
 		
