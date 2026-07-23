@@ -2,6 +2,8 @@ package com.generation.gameshow.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,11 +50,11 @@ public class Produto {
 			private BigDecimal preco;
 			
 
-			// Muitos  produtos podem pertencer à UMA categoria.
-			@ManyToOne
-
-			// chave estrangeira (FK) categoria_id na tabela Produto.
-			@JoinColumn(name = "categoria_id")
+			
+			@ManyToOne  // Muitos  produtos podem pertencer à UMA categoria.
+			@JsonIgnoreProperties("produtos") //Evita loop de protuo, categoria, produto, categoria..
+			
+			@JoinColumn(name = "categoria_id") // chave estrangeira (FK) categoria_id na tabela Produto.
 			private Categoria categoria;
 
 			//  criando um construtor vazio para o Hibernate/Spring conseguir criar objetos.

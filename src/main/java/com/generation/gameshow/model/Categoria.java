@@ -30,12 +30,12 @@ public class Categoria {
 		private Long id;
 		
 		@NotBlank(message = "O atributo título é obrigatório!")
-		@Size(min = 5, max = 100, message = "O atributo título deve ter no mínimo 5 e no máximo 100 caracteres")
+		@Size(min = 2, max = 100, message = "O atributo título deve ter no mínimo 2 e no máximo 100 caracteres")
 		@Column(length = 100)
 		private String tipo;
 		
 		@NotBlank(message = "O atributo descrição é obrigatório!")
-		@Size(min = 10, max = 1000, message = "O atributo descrição deve ter no mínimo 10 e no máximo 1000 caracteres")
+		@Size(min = 2, max = 1000, message = "O atributo descrição deve ter no mínimo 2 e no máximo 1000 caracteres")
 		@Column(length = 1000)
 		private String descricao;
 		
